@@ -1,0 +1,26 @@
+# 本地工作区数据（不属于项目内容）
+.workbuddy/
+
+# 玩家个人存档与累计统计（运行生成，不进仓库）
+/save.json
+/stats.json
+
+# 本仓库只收录 Unity 版本；Python/Tkinter 旧版不上传
+/源码/
+/美术资源/
+/data.json
+/面试尖塔.exe
+
+# 构建产物：建议用 GitHub Releases 单独分发，不提交到仓库
+/*.zip
+/.zip_verify/
+
+# Python 运行缓存
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini

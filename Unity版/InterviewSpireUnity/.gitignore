@@ -1,0 +1,43 @@
+# InterviewSpireUnity 工程：只提交源资产与工程配置。
+# 引擎会自行重建下列目录，提交它们会导致仓库膨胀和合并冲突。
+
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/[Ss]creenshots/
+
+# IDE / 编辑器生成的工程文件
+.vs/
+.vscode/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+.DS_Store
+Thumbs.db
+
+# 崩溃转储与日志
+*.log
+*.stackdump
+sysinfo.txt
+crashlytics-build.properties
+
+# 注意：Assets/ 下所有 .meta 文件必须提交，
+# 它们保存脚本、场景、贴图之间的 GUID 引用，丢失后场景引用会失效。

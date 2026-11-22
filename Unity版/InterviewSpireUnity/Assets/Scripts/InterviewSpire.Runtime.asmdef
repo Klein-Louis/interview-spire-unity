@@ -1,0 +1,14 @@
+{
+  "name": "InterviewSpire.Runtime",
+  "rootNamespace": "InterviewSpire",
+  "references": ["UnityEngine.UI", "Unity.TextMeshPro", "UnityEngine.AudioModule"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

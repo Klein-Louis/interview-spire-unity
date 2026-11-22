@@ -1,0 +1,13 @@
+# 团结引擎导出的 Windows Player：可由 InterviewSpireUnity 工程重新 Build，不必入仓。
+/InterviewSpire.exe
+/InterviewSpire_Data/
+/MonoBleedingEdge/
+/TuanjiePlayer.dll
+/GFSDK_Aftermath_Lib.x64.dll
+/TuanjieCrashHandler64.exe
+/[Bb]uild/
+/[Bb]uilds/
+*.log
+
+# 本地编辑器工具配置（模型、MCP 地址等），不含项目内容
+/.codely-cli/
