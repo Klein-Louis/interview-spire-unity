@@ -211,23 +211,7 @@ namespace InterviewSpire
             State.lastTag = def.tag;
             Emit();
 
-            if (State.enemy.hp <= 0)
-            {
-                if (State.floor + 1 >= GameDatabase.Data.enemies.Count)
-                {
-                    State.phase = 3;
-                    SaveSystem.DeleteForRun(State.runId);
-                    if (Effect != null) Effect("fx_offer_glow_alpha@v1.png", -1);
-                    StatsSystem.Record(State, true);
-                    if (GameOver != null) GameOver(true);
-                }
-                else
-                {
-                    State.phase = 2;
-                    if (NeedReward != null) NeedReward();
-                }
-                Emit();
-            }
+            CheckEnemyDefeat();
         }
 
         private List<RuntimeCard> ExhaustPile() { return State.exhaust; }
@@ -386,6 +370,8 @@ namespace InterviewSpire
             gameStarted = true;
             sessionId++;
             if (State.phase != 0) State.phase = 0;
+            // 读档时敌人已是 0 血（上次击杀后未结算），补触发奖励/通关，避免卡在无响应战斗
+            CheckEnemyDefeat();
             // 旧存档字段补全，避免 UI 空引用
             if (State.exhaust == null) State.exhaust = new List<RuntimeCard>();
             if (State.hand == null) State.hand = new List<RuntimeCard>();

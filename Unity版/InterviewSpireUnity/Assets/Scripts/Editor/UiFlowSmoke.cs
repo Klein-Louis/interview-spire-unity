@@ -111,6 +111,18 @@ namespace InterviewSpire.Editor
             if (game.LastStarReport == null) throw new Exception("UI FLOW FAIL: 没有评分报告");
             Debug.Log("UI FLOW OK: grade=" + game.LastStarReport.grade + " damage=" + game.LastStarReport.damage);
 
+            // 验证：读档后敌人 0 血能补触发奖励，不卡死（截图反馈的 bug）
+            if (game.State == null) throw new Exception("UI FLOW FAIL: 无对局状态可读档");
+            var zeroHp = JsonUtility.FromJson<GameState>(JsonUtility.ToJson(game.State));
+            zeroHp.enemy.hp = 0;
+            zeroHp.phase = 0;
+            game.LoadState(zeroHp);
+            if (game.State.phase != 2 && game.State.floor + 1 >= GameDatabase.Data.enemies.Count)
+                throw new Exception("UI FLOW FAIL: 0血读档未进入通关结算");
+            if (game.State.phase != 2)
+                throw new Exception("UI FLOW FAIL: 0血读档未进入奖励阶段 phase=" + game.State.phase);
+            Debug.Log("UI FLOW OK: 0血读档补触发奖励 phase=" + game.State.phase);
+
             UnityEngine.Object.DestroyImmediate(go);
         }
 

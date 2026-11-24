@@ -118,6 +118,26 @@ namespace InterviewSpire
             Log("造成 " + actual + " 点认可伤害" + (match ? "（题意契合）" : "") + "。", match ? "hit" : "");
         }
 
+        /// <summary>敌人血量归零后统一推进：末轮通关，否则进入选牌奖励。phase 守卫避免重复触发。</summary>
+        internal void CheckEnemyDefeat()
+        {
+            if (State == null || State.phase != 0 || State.enemy == null || State.enemy.hp > 0) return;
+            if (State.floor + 1 >= GameDatabase.Data.enemies.Count)
+            {
+                State.phase = 3;
+                SaveSystem.DeleteForRun(State.runId);
+                if (Effect != null) Effect("fx_offer_glow_alpha@v1.png", -1);
+                StatsSystem.Record(State, true);
+                if (GameOver != null) GameOver(true);
+            }
+            else
+            {
+                State.phase = 2;
+                if (NeedReward != null) NeedReward();
+            }
+            Emit();
+        }
+
         private void Heal(int v)
         {
             State.confidence = Mathf.Min(State.maxConfidence, State.confidence + v);

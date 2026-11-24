@@ -113,23 +113,7 @@ namespace InterviewSpire
             return report;
         }
 
-        private void CheckStarDefeat()
-        {
-            if (State == null || State.enemy.hp > 0) return;
-            if (State.floor + 1 >= GameDatabase.Data.enemies.Count)
-            {
-                State.phase = 3;
-                SaveSystem.DeleteForRun(State.runId);
-                StatsSystem.Record(State, true);
-                if (GameOver != null) GameOver(true);
-            }
-            else
-            {
-                State.phase = 2;
-                if (NeedReward != null) NeedReward();
-            }
-            Emit();
-        }
+        private void CheckStarDefeat() { CheckEnemyDefeat(); }
 
         private static int CountCategories(string text, params string[][] groups)
         {
